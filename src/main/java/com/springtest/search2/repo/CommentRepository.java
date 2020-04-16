@@ -7,6 +7,6 @@ import com.springtest.search2.configuration.CommentRepositoryCustom;
 import com.springtest.search2.model.Comment;
 
 @Repository
-public interface CommentRepository extends JpaRepository<Comment, Integer>,CommentRepositoryCustom<Comment> {
+public interface CommentRepository extends JpaRepository<Comment, Integer>,CommentRepositoryCustom<Comment>  {
 
 }

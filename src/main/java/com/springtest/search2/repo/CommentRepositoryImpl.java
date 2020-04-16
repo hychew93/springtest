@@ -1,5 +1,6 @@
 package com.springtest.search2.repo;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -10,9 +11,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.hibernate.validator.internal.IgnoreForbiddenApisErrors;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
 import com.springtest.search2.configuration.CommentRepositoryCustom;
@@ -28,11 +27,15 @@ public class CommentRepositoryImpl implements CommentRepositoryCustom<Comment>{
 	        CriteriaQuery<Comment> cq = cb.createQuery(Comment.class);
 	 
 	        Root<Comment> comment = cq.from(Comment.class);
+	        List<Predicate> predicates = new ArrayList<>();
 	        for(String key : map.keySet()){
 	        	Predicate prec = cb.equal(comment.get(key), map.get(key));
-	        	cq.where(prec);
+	        	predicates.add(prec);
 	        }
+	        cq.where(predicates.toArray(new Predicate[predicates.size()]));
 	        TypedQuery<Comment> query = em.createQuery(cq); 
 	        return query.getResultList();
 	    }
+
+ 
 }
