@@ -1,5 +1,7 @@
-package com.springtest.search2;
+package com.springtest.search2.repo;
 import org.springframework.data.repository.CrudRepository;
+
+import com.springtest.search2.model.User;
 
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository

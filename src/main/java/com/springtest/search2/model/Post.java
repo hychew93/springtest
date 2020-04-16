@@ -1,4 +1,4 @@
-package com.springtest.search2;
+package com.springtest.search2.model;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;

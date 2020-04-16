@@ -1,4 +1,4 @@
-package com.springtest.search2;
+package com.springtest.search2.repo;
 
 import java.util.List;
 import java.util.Map;
@@ -10,33 +10,29 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.validator.internal.IgnoreForbiddenApisErrors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Repository;
 
+import com.springtest.search2.configuration.CommentRepositoryCustom;
+import com.springtest.search2.model.Comment;
 @Repository
-public class CommentRepositoryImp implements CommentRepositoryCustom{
-	 	@Autowired
-	    @Lazy
-	    CommentRepository commentRepository;
-
-		@Override
-		public List<Comment> findByProperty(Map<String, String> map) {
-			// TODO Auto-generated method stub
-			return null;
-		}
+public class CommentRepositoryImpl implements CommentRepositoryCustom<Comment>{
+	 @Autowired
+	 private EntityManager em;
 	 
-	 /*@Override
+	 @Override
 	 public List<Comment> findByProperty(Map<String, String> map) {
 	        CriteriaBuilder cb = em.getCriteriaBuilder();
 	        CriteriaQuery<Comment> cq = cb.createQuery(Comment.class);
 	 
 	        Root<Comment> comment = cq.from(Comment.class);
 	        for(String key : map.keySet()){
-	        	Predicate test = cb.equal(comment.get(key), map.get(key));
-	        	cq.where(test);
+	        	Predicate prec = cb.equal(comment.get(key), map.get(key));
+	        	cq.where(prec);
 	        }
-	        TypedQuery<Comment> query = em.createQuery(cq);
+	        TypedQuery<Comment> query = em.createQuery(cq); 
 	        return query.getResultList();
-	    }*/
+	    }
 }

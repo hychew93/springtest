@@ -1,4 +1,4 @@
-package com.springtest.search2;
+package com.springtest.search2.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

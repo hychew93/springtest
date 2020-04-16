@@ -1,9 +1,12 @@
-package com.springtest.search2;
+package com.springtest.search2.repo;
 import java.util.List;
 
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+
+import com.springtest.search2.model.IPostCount;
+import com.springtest.search2.model.Post;
 
 
 public interface PostRepository extends PagingAndSortingRepository<Post, Integer>  {

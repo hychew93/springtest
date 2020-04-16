@@ -1,4 +1,4 @@
-package com.springtest.search2;
+package com.springtest.search2.model;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -31,9 +31,6 @@ public class Comment {
 	  	
 	  	private String email;
 		
-		
-	
-		
 		@JsonIgnore
 	  	LocalDateTime createDateTime = LocalDateTime.now();
 		
@@ -47,7 +44,7 @@ public class Comment {
 		@JsonIgnore
 		@ManyToOne(targetEntity = Post.class)
 	    @JoinColumn(name = "post_id",referencedColumnName = "id")
-		@JsonBackReference
+		//@JsonBackReference
 	    private Post post;
 		
 		

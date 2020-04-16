@@ -1,13 +1,22 @@
-package com.springtest.search2;
+package com.springtest.search2.controller;
 
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.springtest.search2.model.Comment;
+import com.springtest.search2.model.IPostCount;
+import com.springtest.search2.model.Post;
+import com.springtest.search2.repo.CommentRepository;
+import com.springtest.search2.repo.PostRepository;
 
 @Controller    
 public class SearchController {
@@ -38,11 +47,12 @@ public class SearchController {
 		return commentRepository.findAll();
 	}
 	
-	/*@GetMapping(value = "/findcomments") 
+	@GetMapping(value = "/findcomments") 
+	@NotFound(action = NotFoundAction.IGNORE)
 	public @ResponseBody List<Comment> search(@RequestParam Map<String, String> reqParam) {
 		
 		return commentRepository.findByProperty(reqParam);
 		
-	}*/
+	}
 	
 }
